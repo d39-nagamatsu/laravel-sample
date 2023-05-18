@@ -11,6 +11,12 @@ services:
         build:  ./docker/php-fpm
         volumes:
             - ./laravel:/var/www/html
+    composer:
+        container_name: composer
+        image: composer:latest
+        volumes:
+            - ./laravel:/app
+        entrypoint: composer
     mysql:
         image: mysql:5.7
         platform: linux/amd64
@@ -21,4 +27,5 @@ services:
             MYSQL_PASSWORD: password
             TZ: Asia/Tokyo
         ports:
-            - 3306:3306
+            - "63306:3306"
+        

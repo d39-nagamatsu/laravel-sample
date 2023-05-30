@@ -1,6 +1,4 @@
-@extends('layout')
-
-@section('content')
+<x-app-layout>
   <div class="container">
     <div class="row">
       <div class="col col-md-4">
@@ -14,7 +12,7 @@
           <div class="list-group">
             @foreach($folders as $folder)
               <a
-                  href="{{ route('tasks.index', ['id' => $folder->id]) }}"
+                  href="{{ route('tasks.index', ['folder_id' => $folder->id]) }}"
                   class="list-group-item {{ $current_folder_id === $folder->id ? 'active' : '' }}"
               >
                 {{ $folder->title }}
@@ -28,7 +26,7 @@
           <div class="panel-heading">タスク</div>
           <div class="panel-body">
             <div class="text-right">
-              <a href="{{ route('tasks.create', ['id' => $current_folder_id]) }}" class="btn btn-default btn-block">
+              <a href="{{ route('tasks.create', ['folder_id' => $current_folder_id]) }}" class="btn btn-default btn-block">
                 タスクを追加する
               </a>
             </div>
@@ -50,7 +48,7 @@
                   <span class="label {{ $task->status_class }}">{{ $task->status_label }}</span>
                 </td>
                 <td>{{ $task->formatted_due_date }}</td>
-                <td><a href="{{ route('tasks.edit', ['id' => $task->folder_id, 'task_id' => $task->id]) }}">編集</a></td>
+                <td><a href="{{ route('tasks.edit', ['folder_id' => $task->folder_id, 'task_id' => $task->id]) }}">編集</a></td>
               </tr>
             @endforeach
             </tbody>
@@ -59,4 +57,4 @@
       </div>
     </div>
   </div>
-@endsection
+</x-app-layout>

@@ -1,10 +1,5 @@
-@extends('layout')
 
-@section('styles')
-@include('share.flatpickr.styles')
-@endsection
-
-@section('content')
+<x-app-layout>
   <div class="container">
     <div class="row">
       <div class="col col-md-offset-3 col-md-6">
@@ -18,7 +13,7 @@
                 @endforeach
               </div>
             @endif
-            <form action="{{ route('tasks.create', ['id' => $folder_id]) }}" method="POST">
+            <form action="{{ route('tasks.create', ['folder_id' => $folder_id]) }}" method="POST">
               @csrf
               <div class="form-group">
                 <label for="title">タイトル</label>
@@ -37,8 +32,9 @@
       </div>
     </div>
   </div>
-@endsection
+</x-app-layout>
+
 
 @section('scripts')
-@include('share.flatpickr.scripts')
+  @include('share.flatpickr.scripts')
 @endsection

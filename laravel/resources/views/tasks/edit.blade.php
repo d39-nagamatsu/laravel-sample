@@ -1,10 +1,4 @@
-@extends('layout')
-
-@section('styles')
-    @include('share.flatpickr.styles')
-@endsection
-
-@section('content')
+<x-app-layout>
     <div class="container">
         <div class="row">
         <div class="col col-md-offset-3 col-md-6">
@@ -19,7 +13,7 @@
                 </div>
                 @endif
                 <form
-                    action="{{ route('tasks.edit', ['id' => $task->folder_id, 'task_id' => $task->id]) }}"
+                    action="{{ route('tasks.edit', ['folder_id' => $task->folder_id, 'task_id' => $task->id]) }}"
                     method="POST"
                 >
                 @csrf
@@ -53,10 +47,5 @@
             </div>
             </nav>
         </div>
-        </div>
-    </div>
-@endsection
-
-@section('scripts')
-    @include('share.flatpickr.scripts')
-@endsection
+    </div
+ </x-app-layout>

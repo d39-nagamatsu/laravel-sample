@@ -17,7 +17,7 @@ class TaskController extends Controller
         $user = Auth::user();
         //対象のフォルダIDを取得
         $folders = Folder::where('user_id', $user->id )->get();
-                
+
         $current_folder = Folder::find($id);
         $tasks = $current_folder->tasks()->get();
 

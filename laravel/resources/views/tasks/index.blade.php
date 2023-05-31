@@ -1,7 +1,7 @@
 <x-app-layout>
   <div class="container">
     <div class="flex justify-center">
-      <div class="relative rounded-xl overflow-auto">
+      <div class="relative rounded-xl overflow-auto m-3">
         <div class="shadow-sm overflow-hidden my-8">
           <table class="border-collapse table-auto text-sm ">
             <thead>
@@ -32,8 +32,7 @@
           </table>
         </div>
       </div>
-      <div class="flex justify-center ml-10">
-        <div class="relative rounded-xl overflow-auto ">
+      <div class="relative rounded-xl overflow-auto m-3">
           <div class="shadow-sm overflow-hidden my-8">
             <table class="border-collapse table-auto text-sm " >
               <thead>
@@ -62,8 +61,8 @@
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-4 dark:text-slate-400 text-slate-500">
                       {{ $task->title }}
                     </td>
-                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-4 dark:text-slate-400 text-slate-500">
-                      <span class="label {{ $task->status_class }}">{{ $task->status_label }}</span>
+                    <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-4 dark:text-slate-400 text-slate-500 {{ $task->status_class }}">
+                      {{ $task->status_label }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-4 dark:text-slate-400 text-slate-500">
                       {{ $task->formatted_due_date }}
@@ -75,51 +74,8 @@
                 @endforeach
               </tbody>
             </table>
-          </div>
         </div>
-      {{--<div class="column col-md-8">
-        <div class="panel panel-default">
-          <div class="panel-heading">タスク</div>
-          <div class="panel-body">
-            <div class="text-right">
-              <a href="{{ route('tasks.create', ['folder_id' => $current_folder_id]) }}" class="btn btn-default btn-block">
-                タスクを追加する
-              </a>
-            </div>
-          </div>
-          <table class="table">
-            <thead>
-            <tr>
-              <th>タイトル</th>
-              <th>状態</th>
-              <th>期限</th>
-              <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($tasks as $task)
-              <tr>
-                <td>{{ $task->title }}</td>
-                <td>
-                  <span class="label {{ $task->status_class }}">{{ $task->status_label }}</span>
-                </td>
-                <td>{{ $task->formatted_due_date }}</td>
-                <td><a href="{{ route('tasks.edit', ['folder_id' => $task->folder_id, 'task_id' => $task->id]) }}">編集</a></td>
-              </tr>
-            @endforeach
-            </tbody>
-          </table>
-        </div>
-      </div>--}}
+      </div>
     </div>
   </div>
-  <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
-  <script src="https://npmcdn.com/flatpickr/dist/l10n/ja.js"></script>
-  <script>
-    flatpickr(document.getElementById('due_date'), {
-      locale: 'ja',
-      dateFormat: "Y/m/d",
-      minDate: new Date()
-    });
-  </script>
 </x-app-layout>

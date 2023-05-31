@@ -12,8 +12,8 @@ class Task extends Model
     use HasFactory;
 
     const STATUS = [
-        1 => [ 'label' => '未着手', 'class' => 'label-danger' ],
-        2 => [ 'label' => '着手中', 'class' => 'label-info' ],
+        1 => [ 'label' => '未着手', 'class' => 'bg-red-300' ],
+        2 => [ 'label' => '着手中', 'class' => 'bg-green-300' ],
         3 => [ 'label' => '完了', 'class' => '' ],
     ];
 

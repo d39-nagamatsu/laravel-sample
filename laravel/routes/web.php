@@ -25,13 +25,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/folders/create', [FolderController::class, 'showCreateForm'])->name('folders.create');
     Route::post('/folders/create', [FolderController::class, 'create']);
 
-    Route::get('/folders/{folder_id}/tasks', [TaskController::class, 'index'])->name('tasks.index');
+    Route::middleware('can:view,folder')->group(function () {
+        Route::get('/folders/{folder}/tasks', [TaskController::class, 'index'])->name('tasks.index');
 
-    Route::get('/folders/{folder_id}/tasks/create', [TaskController::class, 'showCreateForm'])->name('tasks.create');
-    Route::post('/folders/{folder_id}/tasks/create', [TaskController::class, 'create']);
+        Route::get('/folders/{folder}/tasks/create', [TaskController::class, 'showCreateForm'])->name('tasks.create');
+        Route::post('/folders/{folder}/tasks/create', [TaskController::class, 'create']);
 
-    Route::get('/folders/{folder_id}/tasks/{task_id}/edit', [TaskController::class, 'showEditForm'])->name('tasks.edit');
-    Route::post('/folders/{folder_id}/tasks/{task_id}/edit', [TaskController::class, 'edit']);
+        Route::get('/folders/{folder}/tasks/{task}/edit', [TaskController::class, 'showEditForm'])->name('tasks.edit');
+        Route::post('/folders/{folder}/tasks/{task}/edit', [TaskController::class, 'edit']);
+    });
 
     /*Route::get('/dashboard', function () {
         return view('dashboard');

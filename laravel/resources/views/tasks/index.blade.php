@@ -22,7 +22,7 @@
               @foreach($folders as $folder)
                 <tr>
                   <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-4 dark:text-slate-400 {{ $current_folder_id === $folder->id ? 'bg-sky-400 text-white' : 'text-slate-500' }}">
-                    <a href="{{ route('tasks.index', ['folder_id' => $folder->id]) }}" >
+                    <a href="{{ route('tasks.index', ['folder' => $folder->id]) }}" >
                       {{ $folder->title }}
                     </a>
                   </td>
@@ -45,7 +45,7 @@
               <tbody class="bg-white dark:bg-slate-800">
                 <tr>
                   <td class="border-b border-slate-200 dark:border-slate-700 p-4 pl-4 text-slate-500 dark:text-slate-400 text-center" colspan="8">
-                    <a href="{{ route('tasks.create', ['folder_id' => $current_folder_id]) }}" class="rounded-lg py-3 px-10 border-2 ">
+                    <a href="{{ route('tasks.create', ['folder' => $current_folder_id]) }}" class="rounded-lg py-3 px-10 border-2 ">
                       タスクを追加する
                     </a>
                   </td>
@@ -68,7 +68,7 @@
                       {{ $task->formatted_due_date }}
                     </td>
                     <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-4 dark:text-slate-400 text-sky-400">
-                      <a href="{{ route('tasks.edit', ['folder_id' => $task->folder_id, 'task_id' => $task->id]) }}">編集</a>
+                      <a href="{{ route('tasks.edit', ['folder' => $task->folder_id, 'task' => $task->id]) }}">編集</a>
                     </td>
                   </tr>
                 @endforeach

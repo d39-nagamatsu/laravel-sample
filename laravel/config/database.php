@@ -93,9 +93,9 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
-        // ★ 
-        'sqlite_testing' => [
-            'driver' => 'sqlite',
+        // ★ この設定を追加
+        'mysql_testing' => [
+            'driver' => 'mysql',
             'database' => ':memory:',
             'prefix' => '',
         ],

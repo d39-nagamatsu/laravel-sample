@@ -21,7 +21,13 @@ class TaskTest extends TestCase
         parent::setUp();
 
         // テストケース実行前にフォルダデータを作成する
-        $this->seed('FoldersTableSeeder');
+        $this->seed('DatabaseSeeder');
+        // ダミーログイン
+        $response = $this->dummyLogin();
+        $response->assertStatus(200);
+        // 認証を確認
+        $this->assertAuthenticated();
+
     }
 
     /**

@@ -14,6 +14,8 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/');
 
-        $response->assertStatus(200);
+        $response->assertStatus(302)->assertRedirect('/login'); // リダイレクト先を確認
+        // 認証されていないことを確認
+        $this->assertGuest();
     }
 }

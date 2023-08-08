@@ -1,6 +1,6 @@
 .env
 .env.testing
-/node_modules/
-/vendor/
 .DS_store
 *.log
+node_modules
+vendor
